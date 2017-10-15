@@ -6,6 +6,6 @@ public enum Specialite {
 	Psychiatrie,
 	Allergologie,
 	Chirurgie,
-	Hématologie
+	Hematologie
 
 }
