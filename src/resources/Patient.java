@@ -67,6 +67,10 @@ public class Patient {
 		return ficheSuivi;
 	}
 	
+	public void removeFicheSejour() {
+		this.ficheSejour = null;
+	}
+	
 
 
 }

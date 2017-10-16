@@ -17,6 +17,12 @@ public class PatientPool {
 		patientPool.add(patient);
 	}
 	
+	public void removePatient(Patient patient) {
+		if(patientPool.contains(patient)) {
+			patientPool.remove(patient);
+		}
+	}
+	
 	public boolean patientExists(String nomPatient) {
 		boolean result = false;
 		

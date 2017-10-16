@@ -57,6 +57,9 @@ public class App {
 			}
 
 			else if (choix == 4) {
+				
+				manager.sortirPatient(pp);
+				choix = manager.displayMenu();
 
 			}
 

@@ -48,11 +48,10 @@ public class FicheSejour {
 	
 	public void addSpecialiteToSejour(Specialite specialite) {
 		if(specialitesSejour.contains(specialite)) {
-			System.out.println("La spécialité est déjà prévue dans le séjour.");
+			System.out.println("La specialite est deja� prevue dans le sejour.");
 		}
 		else {
 			specialitesSejour.add(specialite);
-			System.out.println("Spécialité ajoutée au séjour.");
 		}
 	}
 	
