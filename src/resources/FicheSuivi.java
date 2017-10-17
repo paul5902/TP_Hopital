@@ -5,11 +5,9 @@ import java.util.Map;
 
 public class FicheSuivi {
 	
-	private Patient patient;
 	private HashMap<CompteRendu, Specialite> listeCompteRendus;
 	
-	public FicheSuivi(Patient patient) {
-		this.patient = patient;
+	public FicheSuivi() {
 		listeCompteRendus = new HashMap<CompteRendu, Specialite>();
 	}
 	
@@ -18,10 +16,12 @@ public class FicheSuivi {
 	}
 	
 	public void displayCompteRendusForSpecialite(Specialite specialite) {
-		for (Map.Entry<CompteRendu, Specialite> entry : listeCompteRendus.entrySet()) {
-		    if(entry.getValue() == specialite) {
-		    	entry.getKey().displayInfo();
-		    }
+		if(!listeCompteRendus.isEmpty()) {
+			for (Map.Entry<CompteRendu, Specialite> entry : listeCompteRendus.entrySet()) {
+				if(entry.getValue() == specialite) {
+					entry.getKey().displayInfo();
+				}
+			}
 		}
 	}
 

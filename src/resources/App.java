@@ -14,15 +14,20 @@ public class App {
 		pp = new PatientPool();
 		mp = new MedecinPool();
 		mp.addMedecin(new Medecin("Olivier", Specialite.Allergologie));
-		Patient patient1 = new Patient("Letailleur", "rue d'aguesseau", 22, 11703315);
-		FicheSuivi ficheSuiv1 = new FicheSuivi(patient1);
-		CompteRendu cr0 = new CompteRendu("11 mai", "Allergie pollen", "Jamie");
+		mp.addMedecin(new Medecin("Souiki", Specialite.Cardiologie));
+		mp.addMedecin(new Medecin("Laude", Specialite.Psychiatrie));
+		mp.addMedecin(new Medecin("Royer", Specialite.Chirurgie));
+		mp.addMedecin(new Medecin("Frere", Specialite.Hematologie));		
+		
+		Patient patient1 = new Patient("Letailleur", "Rue d'aguesseau", 22, 11703315);
+		FicheSuivi ficheSuiv1 = new FicheSuivi();
+		CompteRendu cr0 = new CompteRendu("11 mai 2017", "Allergie pollen averee.", "Jamie Depain");
 		ficheSuiv1.addCompteRendu(cr0, Specialite.Allergologie);
 		patient1.setFicheSuivi(ficheSuiv1);
 		FicheSejour fiche1 = new FicheSejour(patient1, "22 Juin");
 		fiche1.addSpecialiteToSejour(Specialite.Allergologie);
 		fiche1.addSpecialiteToSejour(Specialite.Cardiologie);
-		CompteRendu cr1 = new CompteRendu("23 juin", "Rien a  signaler.", "Toto");
+		CompteRendu cr1 = new CompteRendu("23 juin", "Rien a  signaler.", "William Saurin");
 		fiche1.addCompteRenduToSejour(cr1);
 		patient1.setFicheSejour(fiche1);
 		pp.addPatient(patient1);

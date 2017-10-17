@@ -5,14 +5,12 @@ import java.util.Date;
 
 public class FicheSejour {
 	
-	private Patient patient;
 	private ArrayList<Specialite> specialitesSejour;
 	private String dateEntree;
 	private ArrayList<CompteRendu> listeCompteRendus;
 	
 	
 	public FicheSejour(Patient patient,String dateEntree) {
-		this.patient = patient;
 		specialitesSejour = new ArrayList<Specialite>();
 		this.dateEntree = dateEntree;
 		this.listeCompteRendus = new ArrayList<CompteRendu>();
@@ -32,14 +30,6 @@ public class FicheSejour {
 
 	public void setDateEntree(String dateEntree) {
 		this.dateEntree = dateEntree;
-	}
-
-	public Patient getPatient() {
-		return patient;
-	}
-	
-	public void setPatient(Patient patient) {
-		this.patient = patient;
 	}
 	
 	public ArrayList<Specialite> getSpecialitesSejour() {
