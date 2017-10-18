@@ -39,7 +39,7 @@ public class CompteRendu {
 	}
 	
 	public void displayInfo() {
-		System.out.println("Date consultation :" +dateConsultation+"\n Spécialiste concerné : "+nomSpecialiste+"\n Contenu du CR : "+contenu);
+		System.out.println("Date consultation :" +dateConsultation+"\n\n Specialiste concerne : "+nomSpecialiste+"\n\n Contenu du CR : "+contenu);
 	}
 
 }

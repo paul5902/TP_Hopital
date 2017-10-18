@@ -1,12 +1,9 @@
-Pour compiler le programme Java :
+Pour exécuter le programme Java : java -jar hopital.jar
 
-
-Pour exécuter le programme Java :
-
-
+Toutes les sources sont disponibles dans /src
 
 *************************************************************
-Données présentes dans l'application :
+Données présentes dans l'application : (Notamment pour la consultation)
 
 Médecin :
 Nom :
@@ -16,9 +13,9 @@ Laude - Psychiatrie
 Royer - Chirurgie
 Frere - Hématologie
 
-Patient :
+Patient présent de base
 Nom :
-Letailleur - Compte rendu Allergologie pour la fiche suivi.
+Letailleur - Possède un compte rendu dans sa fiche de suivi en Allergologie
 
 
 *************************************************************

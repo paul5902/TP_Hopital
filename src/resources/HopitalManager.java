@@ -19,6 +19,7 @@ public class HopitalManager {
 		System.out.println("3 - Consultation");
 		System.out.println("4 - Sortie d'un patient.");
 		System.out.print("5 - Quitter");
+		System.out.println("");
 	}
 	
 	public int displayMenu() {
@@ -33,35 +34,46 @@ public class HopitalManager {
 	}
 	
 	public void entreePatient(PatientPool pp) {
-		System.out.println("Veuillez saisir le nom du patient.");
+		System.out.println("***Veuillez saisir le nom du patient.***");
+		System.out.println("");
 		String nom = sc.nextLine();
+		while(nom == null || nom.trim().isEmpty()) {
+			System.out.println("***Nom incorrect. Veuillez ressaisir le nom.***");
+			nom = sc.nextLine();
+		}
 		if (pp.patientExists(nom)) {
-			System.out.println("Le patient existe deja†.");
+			System.out.println("***Le patient existe deja†***");
 		} else {
-			System.out.println("Saisir son numero de secu");
+			System.out.println("***Saisir son numero de secu***");
+			System.out.println("");
 			int numeroSecu;
 			while (!sc.hasNextInt()) {
-			       System.out.println("Erreur. Merci d'entrer un nombre correct. \n ");
+			       System.out.println("***Erreur. Merci d'entrer un nombre correct.*** ");
+			       System.out.println("");
 			       sc.nextLine(); 
 			}
 			numeroSecu = Integer.parseInt(sc.nextLine());
-			System.out.println("Saisir son age");
+			System.out.println("***Saisir son age***");
+			System.out.println("");
 			int age;
 			while (!sc.hasNextInt()) {
-			       System.out.println("Erreur. Merci d'entrer un nombre correct. \n ");
+			       System.out.println("***Erreur. Merci d'entrer un nombre correct.***");
+			       System.out.println("");
 			       sc.nextLine(); 
 			}
 			age = Integer.parseInt(sc.nextLine());
-			System.out.println("Saisir son adresse");
+			System.out.println("***Saisir son adresse***");
+			System.out.println("");
 			String adresse = sc.nextLine();
 			Patient p = new Patient(nom, adresse, age, numeroSecu);
-			System.out.println("Saisir la date d'entree du patient");
+			System.out.println("***Saisir la date d'entree du patient***");
+			System.out.println("");
 			String dateEntree = sc.nextLine();
 			FicheSejour ficheSej = new FicheSejour(p, dateEntree);
-			System.out.println("Quelle specialite(s) doit-il consulter?");
+			System.out.println("***Quelle specialite(s) doit-il consulter?***");
+			System.out.println("");
 			String spec = "";
 			while (!spec.equals("q")) {
-				System.out.println("\n\n\n\n");
 				System.out.println("1 - Cardiologie");
 				System.out.println("2 - Psychiatre");
 				System.out.println("3 - Allergologie");
@@ -92,55 +104,57 @@ public class HopitalManager {
 	}
 	
 	public void visualiserSejour(PatientPool pp) {
-		System.out.println("Saisir le nom du patient dont vous voulez visualiser le sejour.");
+		System.out.println("***Saisir le nom du patient dont vous voulez visualiser le sejour.***");
 		String nom = sc.nextLine();
 		if (!pp.patientExists(nom)) {
-			System.out.println("Le patient n'existe pas!");
+			System.out.println("***Le patient n'existe pas!***");
 		} else {
 			Patient p = pp.getPatient(nom);
 			FicheSejour ficheSej = p.getFicheSejour();
 			System.out.println("Le patient a debute son sejour le " + ficheSej.getDateEntree());
 
 			if (ficheSej.getSpecialitesSejour().isEmpty()) {
-				System.out.println("Pas de specialite dans le s√©jour.");
+				System.out.println("***Pas de specialite dans le s√©jour.***");
 			} else {
-				System.out.println("Liste des specialites du s√©jour:");
+				System.out.println("***Liste des specialites du s√©jour:***");
 				ficheSej.displaySpecialites();
 			}
 
 			if (ficheSej.getListeCompteRendus().isEmpty()) {
-				System.out.println("Pas encore de compte rendu saisi.");
+				System.out.println("***Pas encore de compte rendu saisi.***");
 			} else {
-				System.out.println("Liste des comptes rendus saisis :");
+				System.out.println("***Liste des comptes rendus saisis :***");
 				ficheSej.displayComptesRendus();
 			}
 		}
 	}
 	
 	public void consultation(PatientPool pp, MedecinPool mp) {
-		System.out.println("Saisissez votre nom de medecin");
+		System.out.println("***Saisissez votre nom de medecin***");
 		String nomMedecin = sc.nextLine();
 		if (!mp.medecinExists(nomMedecin)) {
-			System.out.println("Aucune medecin ne correspond √† ce nom.");
+			System.out.println("***Aucune medecin ne correspond a† ce nom.***");
 		} else {
 			Medecin medecin = mp.getMedecin(nomMedecin);
 			
-			System.out.println("Veuillez saisir le nom du patient");
+			System.out.println("***Veuillez saisir le nom du patient***");
+			System.out.println("");
 			String nomPatient = sc.nextLine();
 			Patient p = pp.getPatient(nomPatient);
 			
 			if ((!pp.patientExists(nomPatient)) || (!p.getFicheSejour().findSpecialite(medecin.getSpecialite()))) {
-				System.out.println("Le patient n'existe pas, ou votre specialite n'existe pas pour le sejour du patient.");
+				System.out.println("***Le patient n'existe pas, ou votre specialite n'existe pas pour le sejour du patient.***");
 			}
 			else {
 				System.out.println("Liste des comptes rendus pour la specialite : \n"+medecin.getSpecialite());
+				System.out.println("");
 				p.getFicheSuivi().displayCompteRendusForSpecialite(medecin.getSpecialite());
-				System.out.println("Veuillez saisir votre compte rendu :");
-				System.out.println("Date de la consultation :");
+				System.out.println("***Veuillez saisir votre compte rendu :***");
+				System.out.println("***Date de la consultation :***");
 				String dateConsultation = sc.nextLine();
-				System.out.println("Contenu de la consultation : ");
+				System.out.println("***Contenu de la consultation :*** ");
 				String contenuConsultation = sc.nextLine();
-				System.out.println("Nom du specialiste : ");
+				System.out.println("***Nom du specialiste : ***");
 				String nomSpecialiste = sc.nextLine();
 				CompteRendu compteRendu = new CompteRendu(dateConsultation, contenuConsultation, nomSpecialiste);
 				p.getFicheSejour().addCompteRenduToSejour(compteRendu);
@@ -154,16 +168,16 @@ public class HopitalManager {
 	}
 	
 	public void sortirPatient(PatientPool pp) {
-		System.out.println("Saisissez le nom du patient");
+		System.out.println("***Saisissez le nom du patient***");
 		String nomPatient = sc.nextLine();
 		if(!pp.patientExists(nomPatient)) {
-			System.out.println("Le patient n'existe pas. ");
+			System.out.println("***Le patient n'existe pas.*** ");
 		}
 		else {
 			Patient patient = pp.getPatient(nomPatient);
 			pp.removePatient(patient);
 			patient.removeFicheSejour();
-			System.out.println("Le patient est bien sorti du systËme de gestion de l'hopital.");
+			System.out.println("***Le patient est bien sorti du systËme de gestion de l'hopital.***");
 		}
 	}
 
